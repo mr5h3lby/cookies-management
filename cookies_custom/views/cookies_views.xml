@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        
+        <!-- Parent menu -->
+        <menuitem id="cookies_menu" name="Cookies" sequence="1"/>
+        
+        <!-- Cookies -->
+        <record id="cookies_search_view" model="ir.ui.view">
+            <field name="name">cookies.search</field>
+            <field name="model">cookies</field>
+            <field name="arch" type="xml">
+                <search string="Cookies">
+                    <field name="ref_id"/>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="cookies_tree_view" model="ir.ui.view">
+            <field name="name">cookies.tree</field>
+            <field name="model">cookies</field>
+            <field name="arch" type="xml">
+                <tree string="Appraisal">
+                    <field name="ref_id"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="cookies_kanban_view" model="ir.ui.view">
+            <field name="name">cookies.kanban</field>
+            <field name="model">cookies</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="ref_id"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div>
+                                    <strong>Ref :</strong>
+                                </div>
+                                <div>
+                                    <field name="ref_id"/>
+                                </div>
+                                <div>
+                                    <strong>Name :</strong>
+                                </div>
+                                <div>
+                                    <field name="name"/>
+                                </div>
+                                <div>
+                                    <strong>Description :</strong>
+                                </div>
+                                <div>
+                                    <field name="description"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        
+        <record id="cookies_form_view" model="ir.ui.view">
+            <field name="name">cookies.form</field>
+            <field name="model">cookies</field>
+            <field name="arch" type="xml">
+                <form string="Cookie">
+                    <sheet>
+                        <group colspan="4" col="4">
+                            <field name="ref_id"/>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_cookies_view_form" model="ir.actions.act_window">
+            <field name="name">Cookies</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cookies</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <menuitem action="action_cookies_view_form"
+            id="menu_cookies_view_form" parent="cookies_menu" sequence="1"/>
+        
+    </data>
+</odoo>
